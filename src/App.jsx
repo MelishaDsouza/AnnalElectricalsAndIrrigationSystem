@@ -3,18 +3,18 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-// import logo from "/images/logo.png";
+import logo from "/images/logo.png";
 
 // water fountains
-// import fountain1 from "/images/fountain1.png";
-// import fountain2 from "/images/fountain2.png";
-// import fountain3 from "/images/fountain3.png";
-// import fountain4 from "/images/fountain4.jpeg";
+import fountain1 from "/images/fountain1.png";
+import fountain2 from "/images/fountain2.png";
+import fountain3 from "/images/fountain3.png";
+import fountain4 from "/images/fountain4.jpeg";
 
-// import fountain11 from "/videos/fountain11.mov";
-// import fountain22 from "/videos/fountain22.MOV";
-// import fountain33 from "/videos/fountain33.MOV";
-// import fountain44 from "/videos/fountain44.MP4"
+import fountain11 from "/videos/fountain11.mov";
+import fountain22 from "/videos/fountain22.MOV";
+import fountain33 from "/videos/fountain33.MOV";
+import fountain44 from "/videos/fountain44.MP4"
 
 
 // sprinkler
@@ -44,7 +44,7 @@ import about from "/videos/about.mp4";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [previewMedia, setPreviewMedia] = useState({ src: "/images/fountain1.png" , type: "image" });
+  const [previewMedia, setPreviewMedia] = useState({ src: fountain1, type: "image" });
   const [activeCategory, setActiveCategory] = useState("Water Fountains");
 
   const impactCardsRef = useRef(null);
@@ -52,14 +52,14 @@ function App() {
   // ✅ Gallery data grouped by folder/category
   const galleryData = {
     "Water Fountains": [
-      { src: "/videos/fountain22.MOV", type: "video", title: "Fountain Show" },
-      { src: "/videos/fountain33.MOV", type: "video", title: "Fountain Show" },
-      { src: "/images/fountain3.png", type: "image", title: "Outdoor Fountain Display" },
-      { src: "/videos/fountain44.MP4", type: "video", title: "Fountain Show" },
+      { src: fountain22, type: "video", title: "Fountain Show" },
+      { src: fountain33, type: "video", title: "Fountain Show" },
+      { src: fountain3, type: "image", title: "Outdoor Fountain Display" },
+      { src: fountain44, type: "video", title: "Fountain Show" },
       // { src: fountain1, type: "image", title: "Decorative Garden Fountain" },
-      { src: "/images/fountain4.jpeg", type: "image", title: "Outdoor Fountain Display" },
-      { src: "/videos/fountain11.mov", type: "video", title: "Interior Fountain Show" },
-      { src: "/images/fountain2.png", type: "image", title: "Outdoor Fountain with light show" },
+      { src: fountain4, type: "image", title: "Outdoor Fountain Display" },
+      { src: fountain11, type: "video", title: "Interior Fountain Show" },
+      { src: fountain2, type: "image", title: "Outdoor Fountain with light show" },
     ],
     "Water Sprinklers": [
       // { src: sprinkler33, type: "video", title: "Automatics Lawn Sprinkler" },
@@ -142,8 +142,7 @@ function App() {
       <nav className="navbar">
         <div className="logo">
         <a href="/">
-          {/* <img src={logo} alt="Annal Electricals Logo" className="logo" /> */}
-          <img src="/images/logo.png" alt="Annal Electricals Logo" className="logo" />
+          <img src={logo} alt="Annal Electricals Logo" className="logo" />
         </a>
 
           {/* <img src={logo} alt="Annal Electricals Logo" /> */}
@@ -434,5 +433,4 @@ function App() {
 }
 
 export default App;
-
 
