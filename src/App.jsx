@@ -44,7 +44,7 @@ import about from "/videos/about.mp4";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [previewMedia, setPreviewMedia] = useState({ src: "/images/fountain22.mp4" , type: "image" });
+  const [previewMedia, setPreviewMedia] = useState({ src: "/images/fountain1.png" , type: "image" });
   const [activeCategory, setActiveCategory] = useState("Water Fountains");
 
   const impactCardsRef = useRef(null);
@@ -52,14 +52,14 @@ function App() {
   // ✅ Gallery data grouped by folder/category
   const galleryData = {
     "Water Fountains": [
-      { src: fountain22, type: "video", title: "Fountain Show" },
-      { src: fountain33, type: "video", title: "Fountain Show" },
-      { src: fountain3, type: "image", title: "Outdoor Fountain Display" },
-      { src: fountain44, type: "video", title: "Fountain Show" },
+      { src: "/videos/fountain22.MOV", type: "video", title: "Fountain Show" },
+      { src: "/videos/fountain33.MOV", type: "video", title: "Fountain Show" },
+      { src: "/images/fountain3.png", type: "image", title: "Outdoor Fountain Display" },
+      { src: "/videos/fountain44.MP4", type: "video", title: "Fountain Show" },
       // { src: fountain1, type: "image", title: "Decorative Garden Fountain" },
-      { src: fountain4, type: "image", title: "Outdoor Fountain Display" },
-      { src: fountain11, type: "video", title: "Interior Fountain Show" },
-      { src: fountain2, type: "image", title: "Outdoor Fountain with light show" },
+      { src: "/images/fountain4.jpeg", type: "image", title: "Outdoor Fountain Display" },
+      { src: "/videos/fountain11.mov", type: "video", title: "Interior Fountain Show" },
+      { src: "/images/fountain2.png, type: "image", title: "Outdoor Fountain with light show" },
     ],
     "Water Sprinklers": [
       // { src: sprinkler33, type: "video", title: "Automatics Lawn Sprinkler" },
