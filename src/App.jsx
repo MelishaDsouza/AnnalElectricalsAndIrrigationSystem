@@ -6,15 +6,15 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 // import logo from "/images/logo.png";
 
 // water fountains
-import fountain1 from "/images/fountain1.png";
-import fountain2 from "/images/fountain2.png";
-import fountain3 from "/images/fountain3.png";
-import fountain4 from "/images/fountain4.jpeg";
+// import fountain1 from "/images/fountain1.png";
+// import fountain2 from "/images/fountain2.png";
+// import fountain3 from "/images/fountain3.png";
+// import fountain4 from "/images/fountain4.jpeg";
 
-import fountain11 from "/videos/fountain11.mov";
-import fountain22 from "/videos/fountain22.MOV";
-import fountain33 from "/videos/fountain33.MOV";
-import fountain44 from "/videos/fountain44.MP4"
+// import fountain11 from "/videos/fountain11.mov";
+// import fountain22 from "/videos/fountain22.MOV";
+// import fountain33 from "/videos/fountain33.MOV";
+// import fountain44 from "/videos/fountain44.MP4"
 
 
 // sprinkler
