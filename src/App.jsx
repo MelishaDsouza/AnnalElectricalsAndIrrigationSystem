@@ -5,13 +5,6 @@ import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import logo from "/images/logo.png";
 
-// services 
-// import service1 from "/images/service1.jpeg";
-// import service2 from "/images/service2.png";
-// import service3 from "/images/service3.jpg";
-// import service4 from "/images/service4.png";
-// import service5 from "/images/service5.jpg";
-
 // water fountains
 import fountain1 from "/images/fountain1.png";
 import fountain2 from "/images/fountain2.png";
@@ -45,12 +38,9 @@ import pool1 from "/images/pool1.jpg"
 import pool11 from "/videos/pool11.mp4"
 import pool22 from "/videos/pool22.mp4"
 
-
 //default
 import annal from "/videos/annal.mp4";
 import about from "/videos/about.mp4";
-
-
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -239,29 +229,24 @@ function App() {
             {
               title: "Automation in Irrigation",
               desc: "Reduces manpower and ensures efficient, hassle-free watering for your garden with advanced fog systems, drip irrigation, and automated sprinkler solutions.",
-              img: "/images/service1.jpeg",
             },
             {
               title: "Water Fountains",
               desc: "Where art meets engineering — crafting elegant water fountains that bring style, serenity, and precision to homes, gardens, and commercial spaces.",
-              img: "/images/service2.png",
             },
          
             {
               title: "Swimming Pools",
               desc: "We craft pools that bring luxury, comfort, and lasting quality to your surroundings.",
-              img: "/images/service3.jpg",
             },
            
             {
               title: "Electrical Works",
               desc: "We specialize in High Tension (HT) and Transformer Centre (TC) installations, combining expertise with a commitment to quality and reliability.",
-              img: "/images/service4.png",
             },
             {
               title: "Rooftop Solar Panel",
               desc: "Harness the sun’s power with efficient solar rooftop panels for a cleaner, cost-saving energy future.",
-              img: "/images/service5.jpg",
             },
           ].map((service, i) => (
             <div
@@ -270,8 +255,8 @@ function App() {
               data-aos="fade-up"
               data-aos-delay={i * 100}
             >
-              <img src={service.img} alt={service.title} className="service-img" />
-              <div className="icon">{service.icon}</div>
+              {/* <img src={service.img} alt={service.title} className="service-img" /> */}
+              {/* <div className="icon">{service.icon}</div> */}
               <h3>{service.title}</h3>
               <p>{service.desc}</p>
             </div>
@@ -399,7 +384,7 @@ function App() {
             <div className="footer-logo">
               <img src={logo} alt="Annal Electricals Logo" className="footer-logo-img" />
               <p>
-                <strong>Main Office:</strong> <a href="https://share.google/OBSYXuKMPofzOGlsT">📍 Kotimura 5th Cross, Kulshekar, Mangalore, Karnataka 575005</a>
+                <strong>Main Office:</strong> <a href="https://maps.app.goo.gl/Zs84YQGSV4jsxzwJ7">📍 Kotimura 5th Cross, Kulshekar, Mangalore, Karnataka 575005</a>
               </p>
               <p><strong>📞</strong> <a href="tel:+919686612726">+91 9686612726</a></p>
               <p><strong>✉️</strong> <a href="mailto:annalelectricals@gmail.com">annalelectricals@gmail.com</a></p>
