@@ -6,11 +6,11 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import logo from "/images/logo.png";
 
 // services 
-import service1 from "/images/service1.jpeg";
-import service2 from "/images/service2.png";
-import service3 from "/images/service3.jpg";
-import service4 from "/images/service4.png";
-import service5 from "/images/service5.jpg";
+// import service1 from "/images/service1.jpeg";
+// import service2 from "/images/service2.png";
+// import service3 from "/images/service3.jpg";
+// import service4 from "/images/service4.png";
+// import service5 from "/images/service5.jpg";
 
 // water fountains
 import fountain1 from "/images/fountain1.png";
@@ -239,29 +239,29 @@ function App() {
             {
               title: "Automation in Irrigation",
               desc: "Reduces manpower and ensures efficient, hassle-free watering for your garden with advanced fog systems, drip irrigation, and automated sprinkler solutions.",
-              src: service1,
+              img: "/images/service1.jpeg",
             },
             {
               title: "Water Fountains",
               desc: "Where art meets engineering — crafting elegant water fountains that bring style, serenity, and precision to homes, gardens, and commercial spaces.",
-              src: service2,
+              img: "/images/service2.png",
             },
          
             {
               title: "Swimming Pools",
               desc: "We craft pools that bring luxury, comfort, and lasting quality to your surroundings.",
-              src: service3,
+              img: "/images/service3.jpg",
             },
            
             {
               title: "Electrical Works",
               desc: "We specialize in High Tension (HT) and Transformer Centre (TC) installations, combining expertise with a commitment to quality and reliability.",
-              src: service4,
+              img: "/images/service4.png",
             },
             {
               title: "Rooftop Solar Panel",
               desc: "Harness the sun’s power with efficient solar rooftop panels for a cleaner, cost-saving energy future.",
-              src: service5,
+              img: "/images/service5.jpg",
             },
           ].map((service, i) => (
             <div
@@ -391,85 +391,6 @@ function App() {
             </div>
           </div>
         </section>
-
-
-
-
-        {/* Gallery Section - Redesigned with Inline Preview (Images + Videos)
-
-        
-        <section className="gallery" id="Our Work" data-aos="fade-up">
-          <h2 className="gallery-heading">
-            Navigating <span>Our Masterpieces</span>
-          </h2>
-          <p className="gallery-subheading">
-            Explore Our Smart Irrigation and Water Fountain Projects with Interactive Visualization
-          </p>
-
-          <div className="gallery-container">
-            <div className="gallery-main">
-              {previewMedia?.type === "video" ? (
-                <video
-                  src={previewMedia.src}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="gallery-video"
-                />
-              ) : (
-                <img src={previewMedia?.src || g1} alt="Preview" />
-              )}
-            </div>
-
-            <div className="gallery-list">
-              {[
-                { src: gv2, type: "video", title: "Sprinkler on Landscape" },
-                { src: g6, type: "image", title: "Water Sprinkler for Farms"},
-                { src: gv3, type: "video", title: "Water Fountain" },
-                { src: g1, type: "image", title: "Water Fountain" },
-                { src: g5, type: "image", title: "Water Sprinkler for Gardens"},
-                { src: g2, type: "image", title: "Water Fountain"},
-                
-                { src: g3, type: "image", title: "Sprinkler" },
-                { src: gv1, type: "video", title: "Water Fountain for Home" },
-                { src: g4, type: "image", title: "Drip Irrigation" },
-                { src: gv4, type: "video", title: "Water Sprinkler for Gardens"},
-                
-                
-
-
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className={`gallery-list-item ${
-                    previewMedia?.src === item.src ? "active" : ""
-                  }`}
-                  onClick={() => setPreviewMedia(item)}
-                >
-                  {item.type === "video" ? (
-                    <video
-                      src={item.src}
-                      muted
-                      loop
-                      autoPlay
-                      playsInline
-                      className="thumb-video"
-                    />
-                  ) : (
-                    <img src={item.src} alt="Gallery" />
-                  )}
-
-      
-                  <div className="gallery-info">
-                    <h3>{item.title}</h3>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section> */}
-
 
 
         <footer className="footer" id="contact">
