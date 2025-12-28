@@ -3,7 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import logo from "/images/logo.png";
+// import logo from "/images/logo.png";
 
 // water fountains
 import fountain1 from "/images/fountain1.png";
@@ -44,7 +44,7 @@ import about from "/videos/about.mp4";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [previewMedia, setPreviewMedia] = useState({ src: fountain1, type: "image" });
+  const [previewMedia, setPreviewMedia] = useState({ src: "/images/fountain22.mp4" , type: "image" });
   const [activeCategory, setActiveCategory] = useState("Water Fountains");
 
   const impactCardsRef = useRef(null);
@@ -142,7 +142,8 @@ function App() {
       <nav className="navbar">
         <div className="logo">
         <a href="/">
-          <img src={logo} alt="Annal Electricals Logo" className="logo" />
+          {/* <img src={logo} alt="Annal Electricals Logo" className="logo" /> */}
+          <img src="/images/logo.png" alt="Annal Electricals Logo" className="logo" />
         </a>
 
           {/* <img src={logo} alt="Annal Electricals Logo" /> */}
