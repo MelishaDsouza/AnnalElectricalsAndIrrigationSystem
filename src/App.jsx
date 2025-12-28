@@ -59,7 +59,7 @@ function App() {
       // { src: fountain1, type: "image", title: "Decorative Garden Fountain" },
       { src: "/images/fountain4.jpeg", type: "image", title: "Outdoor Fountain Display" },
       { src: "/videos/fountain11.mov", type: "video", title: "Interior Fountain Show" },
-      { src: "/images/fountain2.png, type: "image", title: "Outdoor Fountain with light show" },
+      { src: "/images/fountain2.png", type: "image", title: "Outdoor Fountain with light show" },
     ],
     "Water Sprinklers": [
       // { src: sprinkler33, type: "video", title: "Automatics Lawn Sprinkler" },
