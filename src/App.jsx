@@ -6,11 +6,11 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import logo from "/images/logo.png";
 
 // services 
-// import service1 from "/images/service1.jpeg";
-// import service2 from "/images/service2.png";
-// import service3 from "/images/service3.jpg";
-// import service4 from "/images/service4.png";
-// import service5 from "/images/service5.jpg";
+import service1 from "/images/service1.jpeg";
+import service2 from "/images/service2.png";
+import service3 from "/images/service3.jpg";
+import service4 from "/images/service4.png";
+import service5 from "/images/service5.jpg";
 
 // water fountains
 import fountain1 from "/images/fountain1.png";
@@ -239,29 +239,29 @@ function App() {
             {
               title: "Automation in Irrigation",
               desc: "Reduces manpower and ensures efficient, hassle-free watering for your garden with advanced fog systems, drip irrigation, and automated sprinkler solutions.",
-              img: "/images/service1.jpeg",
+              src: service1,
             },
             {
               title: "Water Fountains",
               desc: "Where art meets engineering — crafting elegant water fountains that bring style, serenity, and precision to homes, gardens, and commercial spaces.",
-              img: "/images/service2.png",
+              src: service2,
             },
          
             {
               title: "Swimming Pools",
               desc: "We craft pools that bring luxury, comfort, and lasting quality to your surroundings.",
-              img: "/images/service3.jpg",
+              src: service3,
             },
            
             {
               title: "Electrical Works",
               desc: "We specialize in High Tension (HT) and Transformer Centre (TC) installations, combining expertise with a commitment to quality and reliability.",
-              img: "/images/service4.png",
+              src: service4,
             },
             {
               title: "Rooftop Solar Panel",
               desc: "Harness the sun’s power with efficient solar rooftop panels for a cleaner, cost-saving energy future.",
-              img: "/images/service5.jpg",
+              src: service5,
             },
           ].map((service, i) => (
             <div
