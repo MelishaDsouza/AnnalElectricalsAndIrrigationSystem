@@ -952,30 +952,36 @@ a {
 }
 
 
-
-
-
-/* Responsive Navbar */
 @media (max-width: 768px) {
   .nav-links {
     position: fixed;
-    top: 80px;
+    top: 72px; /* aligns under navbar */
     right: -100%;
+    width: min(75vw, 260px); /* responsive width */
+    height: auto; /* let content decide height */
     background: #2a6d2b;
+    display: flex;
     flex-direction: column;
-    width: 150px;
-    height: calc(45% - 90px);
-    gap: 1.4rem;
-    padding: 1.5rem;
-    box-shadow: -4px 0 12px rgba(0,0,0,0.1);
-    transition: right 0.3s;
+    gap: 1.2rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 0 0 16px;
+    box-shadow: -6px 6px 18px rgba(0,0,0,0.2);
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
   }
 
   .nav-links.open {
     right: 0;
   }
 
+  .nav-links li a {
+    padding: 0.5rem 0;
+    display: block;
+    font-size: 1rem;
+  }
+
   .hamburger {
     display: block;
   }
 }
+
