@@ -955,20 +955,21 @@ a {
 @media (max-width: 768px) {
   .nav-links {
     position: fixed;
-    top: 70px; /* height of navbar */
+    top: 56px; /* ↓ reduced navbar height */
     right: -100%;
-    width: min(80vw, 260px);
+
+    width: min(65vw, 220px); /* ↓ reduced width */
     background-color: #2a6d2b;
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
-    padding: 1.5rem 1.2rem;
-    gap: 1.3rem;
+    padding: 1rem 0.9rem; /* ↓ reduced padding */
+    gap: 0.9rem; /* ↓ reduced vertical spacing */
 
-    border-radius: 0 0 0 18px;
-    box-shadow: -8px 10px 25px rgba(0,0,0,0.3);
+    border-radius: 0 0 0 14px;
+    box-shadow: -6px 8px 20px rgba(0,0,0,0.25);
 
     transition: right 0.3s ease-in-out;
     z-index: 999;
@@ -985,9 +986,9 @@ a {
   .nav-links li a {
     display: block;
     width: 100%;
-    font-size: 1.1rem;
+    font-size: 0.95rem; /* ↓ smaller text */
     font-weight: 600;
-    padding: 0.6rem 0.2rem;
+    padding: 0.45rem 0.1rem; /* ↓ reduced height per item */
     color: #000;
   }
 
@@ -997,9 +998,10 @@ a {
 
   .hamburger {
     display: block;
-    font-size: 2rem;
+    font-size: 1.7rem; /* ↓ smaller hamburger */
     cursor: pointer;
   }
 }
+
 
 
