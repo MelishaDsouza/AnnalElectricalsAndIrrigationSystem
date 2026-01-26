@@ -1,4 +1,4 @@
-  /* Reset & basic styles */
+/* Reset & basic styles */
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ body {
   font-family: "Poppins", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   background-color: #38563a;
-  color: #000000;
+  color: #ffffff;
 }
 
 a {
@@ -25,7 +25,7 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #2e5e35;
+  background-color: #000000;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   position: sticky;
   top: 0;
@@ -139,7 +139,7 @@ a {
 }
 
 .hero p {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   margin-bottom: 2rem;
 }
 
@@ -279,63 +279,6 @@ a {
   }
 }
 
-
-/* Services Section */
-/* .services {
-  padding: 5rem 2rem;
-  background-color: rgb(58, 103, 51);
-  text-align: center;
-}
-
-.services h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-}
-
-.services h2 span {
-  color: #c2e60d;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-}
-
-.service-card {
-  background:#f3f76a;
-  background-blend-mode: overlay;
-  border-radius: 20px;
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-@media (max-width: 768px) {
-  .services-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 1rem;
-    scroll-snap-type: x mandatory; 
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 1rem;
-    
-  }
-  .service-card {
-    flex: 0 0 80%; 
-    scroll-snap-align: start; 
-    margin-bottom: 0; 
-  }
-
-  .service-card .service-img {
-    height: 150px; 
-  }
-} */
-
 /* Services Section Container */
 .services {
   padding: 5rem 2rem;
@@ -439,34 +382,62 @@ a {
 }
 
 /* Authorized Dealer Section */
-.authorized-dealer {
-  text-align: center;
-  padding: 60px 20px;
-  background-color: #2c5120; /* Contrast with the green sections */
-  border-bottom: 1px solid #2e830a;
-}
-
-.dealer-container h3 {
-  font-size: 1.2rem;
-  color: #d6ef16;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
-.dealer-logo {
-  width: 250px;
-  height: auto;
-  transition: transform 0.3s ease;
-  margin-bottom: 20px;
-}
-
-.dealer-label {
-  font-size: 2rem;
-
-.dealer-logo:hover {
-  transform: scale(1.05);
-}
+/* ==========================================================================
+   AUTHORIZED DEALER SECTION
+   ========================================================================== */
+   .authorized-dealer {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #192f0c; /* Clean white background to make logo pop */
+    border-bottom: 4px solid #f6ff00; /* Matching your theme accent */
+  }
+  
+  .dealer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Updated Label: Big and Bold */
+  .dealer-label {
+    display: block;
+    font-size: 2.2rem;          /* Big size */
+    font-weight: 800;          /* Extra Bold */
+    color: #f2ff02;            /* Dark green for authority */
+    text-transform: uppercase;
+    letter-spacing: 5px;       /* Spaced out for premium look */
+    margin-bottom: 30px;       /* Space before the logo */
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .dealer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .dealer-logo {
+    width: 320px;              /* Increased size to match big text */
+    height: auto;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.1));
+  }
+  
+  .dealer-logo:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive adjustment */
+  @media (max-width: 768px) {
+    .dealer-label {
+      font-size: 1.8rem;
+      letter-spacing: 3px;
+    }
+    
+    .dealer-logo {
+      width: 240px;
+    }
+  }
 
 .dealer-description {
   max-width: 800px;
@@ -480,12 +451,13 @@ a {
 .highlight-text {
   font-size: 1.3rem;
   color: #ffcc00; /* Use a gold/yellow to make "Trusted in Mangalore" stand out */
+  font-family: Georgia, 'Times New Roman', Times, serif;
   margin-top: 15px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .service-areas {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #fff;
   opacity: 0.9;
   margin-top: 10px;
@@ -575,12 +547,10 @@ a {
   .about p { font-size: 1rem; }
 }
 
-
-
 /* Gallery Section */
 .gallery {
   padding: 3rem 2rem;
-  background-color: #869d6e;
+  background-color: #173002;
   color: #444;
   text-align: center;
   font-family: 'Poppins', sans-serif;
@@ -589,7 +559,7 @@ a {
 .gallery-heading {
   font-size: 2.8rem;
   font-weight: 900;
-  color: #103411;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
