@@ -4,7 +4,7 @@ import "aos/dist/aos.css";
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import logo from "/images/logo.png";
-
+import { useInView } from "react-intersection-observer";
 // water fountains
 import fountain1 from "/images/fountain1.png";
 import fountain2 from "/images/fountain2.png";
@@ -134,6 +134,11 @@ function App() {
   
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  
+  const { ref: aboutRef, inView: aboutInView } = useInView({
+    triggerOnce: true, // Load it once, don't unload it when scrolling up
+    threshold: 0.2,    // Start loading when 20% of the section is visible
+  });
 
 
   return (
@@ -266,7 +271,7 @@ function App() {
 
 
       {/* About Section */}
-        <section className="about" id="Know Us" data-aos="fade-up">
+        <section className="about" id="Know Us" data-aos="fade-up" ref={aboutRef}>
           {/* Fullscreen background video */}
           <video
             className="about-video"
@@ -278,6 +283,8 @@ function App() {
             <source src={about} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+
+          <div className="about-video-placeholder" style={{ backgroundColor: '#2c3e50', width: '100%', height: '100%', position: 'absolute' }} />
 
           {/* Overlay to dull video */}
           <div className="about-overlay-bg"></div>
