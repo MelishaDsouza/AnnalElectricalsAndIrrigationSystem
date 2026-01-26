@@ -7,7 +7,6 @@ import { useInView } from "react-intersection-observer";
 
 // Assets
 import logo from "/images/logo.png";
-// import fountain1 from "/images/fountain1.png";
 import fountain2 from "/images/fountain2.png";
 import fountain3 from "/images/fountain3.png";
 import fountain4 from "/images/fountain4.jpeg";
@@ -38,7 +37,6 @@ function App() {
 
   const impactCardsRef = useRef(null);
 
-  // ✅ Memoized Gallery Data to prevent unnecessary re-renders
   const galleryData = useMemo(() => ({
     "Water Fountains": [
       { src: fountain22, type: "video", title: "Fountain Show" },
@@ -72,24 +70,20 @@ function App() {
     ],
   }), []);
 
-  // ✅ Auto-set preview when category changes
   useEffect(() => {
     const firstItem = galleryData[activeCategory]?.[0];
     if (firstItem) setPreviewMedia(firstItem);
   }, [activeCategory, galleryData]);
 
-  // ✅ Initialize AOS
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  // ✅ Intersection Observer for Lazy Loading the "About" video
   const { ref: aboutRef, inView: aboutInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  // ✅ Mobile Auto-Scroll for Impact Cards
   useEffect(() => {
     const cardsContainer = impactCardsRef.current;
     if (!cardsContainer) return;
@@ -124,7 +118,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* Navbar */}
       <nav className="navbar">
         <div className="logo">
           <a href="/">
@@ -152,8 +145,12 @@ function App() {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1>Innovative <span>Water & Power</span> Solutions</h1>
-          <p>Transform your home or business with intelligent <strong>irrigation systems</strong>, energy-efficient <strong>electrical solutions</strong>, and stunning <strong>water features</strong>.</p>
-          <p>Trusted across Mangalore for quality, reliability, and innovation.</p>
+          <p className="hero-subtitle">Transform your home or business with intelligent irrigation, energy-efficient electrical solutions, and stunning water features.</p>
+          
+          <div className="hero-highlights">
+            <p className="highlight-text">Mangalore's Most Trusted Partner</p>
+            <p className="service-areas">Serving: Mangalore | Udupi | Kundapura | Manipal | Puttur | Kerala | Chickmagalur | Madikeri | Bantwal | Bhatkal | Karkala</p>
+          </div>
         </div>
 
         <div className="impact-cards" ref={impactCardsRef}>
@@ -171,12 +168,58 @@ function App() {
         </div>
       </section>
 
+      {/* Authorized Dealer Section */}
+      <section className="authorized-dealer" data-aos="fade-up">
+        <div className="dealer-container">
+          <span className="dealer-label">AUTHORIZED DEALERS</span>
+          <div className="dealer-brand">
+            <img 
+              src="/images/rainbird-logo.png" 
+              alt="Rain Bird Logo" 
+              className="dealer-logo" 
+            />
+          </div>
+          <p className="dealer-description">
+            We provide world-class <strong>Automatic Controllers</strong> from <strong>Rain Bird</strong>, 
+            ensuring your landscapes receive the most efficient and technologically advanced irrigation management.
+          </p>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section className="services" id="Our Services" data-aos="fade-up">
+        <h2>Our   <span>Specialized</span> Solutions !</h2>
+        <div className="services-grid">
+          {[
+            { title: "Automation in Irrigation", desc: "Reduces manpower with advanced fog systems, drip irrigation, and Rain Bird automated sprinklers.", img: "/images/drip irrigation.jpeg" },
+            { title: "Water Fountains", desc: "Crafting elegant water fountains for homes, gardens, and commercial spaces.", img: "/images/fountain2.png" },
+            { title: "Swimming Pools", desc: "Crafting pools that bring luxury, comfort, and lasting quality.", img: "/images/pool1.jpg" },
+            { title: "Electrical Works", desc: "Specializing in HT and TC installations with a commitment to reliability.", img: "/images/service4.png" },
+            { title: "Rooftop Solar Panel", desc: "Harness the sun’s power for a cleaner, cost-saving energy future.", img: "/images/service5.jpg" }
+          ].map((service, i) => (
+            <div className="service-card" key={i} data-aos="fade-up" data-aos-delay={i * 100}>
+              <div className="service-card-inner">
+                {/* Front Side: Text Content */}
+                <div className="service-card-front">
+                  <h3>{service.title}</h3>
+                  <div className="title-spacer"></div> {/* Space after heading */}
+                  <p>{service.desc}</p>
+                </div>
+                {/* Back Side: Image */}
+                <div className="service-card-back">
+                  <img src={service.img} alt={service.title} />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* <section className="services" id="Our Services" data-aos="fade-up">
         <h2>Our <span>Premium</span> Services</h2>
         <div className="services-grid">
           {[
-            { title: "Automation in Irrigation", desc: "Reduces manpower with advanced fog systems, drip irrigation, and automated sprinklers." },
+            { title: "Automation in Irrigation", desc: "Reduces manpower with advanced fog systems, drip irrigation, and Rain Bird automated sprinklers." },
             { title: "Water Fountains", desc: "Crafting elegant water fountains for homes, gardens, and commercial spaces." },
             { title: "Swimming Pools", desc: "Crafting pools that bring luxury, comfort, and lasting quality." },
             { title: "Electrical Works", desc: "Specializing in HT and TC installations with a commitment to reliability." },
@@ -188,9 +231,9 @@ function App() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
-      {/* About Section - Optimized with Intersection Observer */}
+      {/* About Section */}
       <section className="about" id="Know Us" data-aos="fade-up" ref={aboutRef}>
         {aboutInView ? (
           <video className="about-video" autoPlay loop muted playsInline>
@@ -202,8 +245,9 @@ function App() {
         <div className="about-overlay-bg"></div>
         <div className="about-overlay">
           <h2>About <span>Annal Electricals & Irrigation Systems</span></h2>
-          <p>At Annal Electricals and Irrigation, we bring together innovation and sustainability to deliver smarter, greener, and more efficient solutions.</p>
-          <p>Whether you're a builder, homeowner, or developer, we are your trusted partner for solutions that blend technology and design.</p>
+          <p>Based in <strong>Mangalore</strong>, we are the region's <strong>Trusted Name</strong> for innovation and sustainability in irrigation and electrical works.</p>
+          <p>Servicing diverse regions including <strong>Udupi, Puttur, Kerala, Chickmagalur, Bhatkal, and Karkala</strong>, we manage every detail with precision and care.</p>
+          <p>As <strong>Authorized Dealers for Rain Bird</strong>, we utilize industry-leading automatic controllers to deliver precision watering and superior craftsmanship.</p>
         </div>
       </section>
 
