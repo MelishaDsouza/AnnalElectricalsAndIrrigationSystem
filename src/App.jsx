@@ -334,7 +334,7 @@ function App() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>© 2026 Annal Electricals & Irrigation System. All Rights Reserved.</p>
+          <p>© 2025 Annal Electricals & Irrigation System. All Rights Reserved.</p>
         </div>
       </footer>
     </div>
