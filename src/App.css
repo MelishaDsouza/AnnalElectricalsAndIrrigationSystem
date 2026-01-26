@@ -1,4 +1,4 @@
-/* Reset & basic styles */
+  /* Reset & basic styles */
 * {
   margin: 0;
   padding: 0;
@@ -460,6 +460,9 @@ a {
   transition: transform 0.3s ease;
   margin-bottom: 20px;
 }
+
+.dealer-label {
+  font-size: 2rem;
 
 .dealer-logo:hover {
   transform: scale(1.05);
