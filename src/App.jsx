@@ -360,19 +360,22 @@ function App() {
                     <video
                       src={item.src}
                       muted
-                      loop
-                      autoPlay
-                      playsInline
+                      // ❌ REMOVED autoPlay
+                      // ❌ REMOVED loop
+                      preload="metadata" // ✅ Only load the first frame/metadata
                       className="thumb-video"
+                      // Optional: Add onMouseOver to play only when hovering
+                      onMouseOver={(e) => e.target.play()}
+                      onMouseOut={(e) => e.target.pause()}
                     />
-                  ) : (
-                    <img src={item.src} alt={item.title} />
-                  )}
-                  <div className="gallery-info">
-                    <h3>{item.title}</h3>
-                  </div>
-                </div>
-              ))}
+                ) : (
+                  <img src={item.src} alt={item.title} />
+               )}
+              <div className="gallery-info">
+                <h3>{item.title}</h3>
+              </div>
+             </div>
+          ))}
             </div>
           </div>
         </section>
