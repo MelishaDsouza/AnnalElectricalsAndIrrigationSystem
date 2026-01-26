@@ -306,7 +306,7 @@ function App() {
         <div className="footer-content">
           <div className="footer-logo">
             <img src={logo} alt="Footer Logo" className="footer-logo-img" />
-            <p><strong>Main Office:</strong> Kotimura 5th Cross, Kulshekar, Mangalore, 575005</p>
+            <p><strong>Main Office:</strong> <a href="https://maps.app.goo.gl/WZToMYWRYFkjCve49">Kotimura 5th Cross, Kulshekar, Mangalore, 575005</a></p>
             <p><strong>📞</strong> <a href="tel:+919686612726">+91 9686612726</a></p>
             <p><strong>✉️</strong> <a href="mailto:annalelectricals@gmail.com">annalelectricals@gmail.com</a></p>
             <div className="social-icons">
@@ -334,7 +334,7 @@ function App() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>© 2025 Annal Electricals & Irrigation System. All Rights Reserved.</p>
+          <p>© 2026 Annal Electricals & Irrigation System. All Rights Reserved.</p>
         </div>
       </footer>
     </div>
