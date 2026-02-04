@@ -6,7 +6,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useInView } from "react-intersection-observer";
 
 // Assets
-import logo from "/images/logo.png";
+import logo from "/images/favicon.png";
 import fountain2 from "/images/fountain2.png";
 import fountain3 from "/images/fountain3.png";
 import fountain4 from "/images/fountain4.jpeg";
@@ -308,7 +308,7 @@ function App() {
             <img src={logo} alt="Footer Logo" className="footer-logo-img" />
             <p><strong>Main Office:</strong> <a href="https://maps.app.goo.gl/WZToMYWRYFkjCve49">Kotimura 5th Cross, Kulshekar, Mangalore, 575005</a></p>
             <p><strong>📞</strong> <a href="tel:+919686612726">+91 9686612726</a></p>
-            <p><strong>✉️</strong> <a href="mailto:annalelectricals@gmail.com">annalelectricals@gmail.com</a></p>
+            <p><strong>✉️</strong> <a href="mailto:annalelectricals72@gmail.com">annalelectricals72@gmail.com</a></p>
             <div className="social-icons">
               <a href="https://facebook.com"><i className="fab fa-facebook-f"></i></a>
               <a href="https://instagram.com/annalelectricals"><i className="fab fa-instagram"></i></a>
