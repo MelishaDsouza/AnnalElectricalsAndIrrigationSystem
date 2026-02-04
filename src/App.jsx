@@ -6,7 +6,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useInView } from "react-intersection-observer";
 
 // Assets
-import logo from "/images/favicon.png";
+import logo from "/images/logo.png";
 import fountain2 from "/images/fountain2.png";
 import fountain3 from "/images/fountain3.png";
 import fountain4 from "/images/fountain4.jpeg";
