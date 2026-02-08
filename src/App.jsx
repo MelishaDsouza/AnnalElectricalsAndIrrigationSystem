@@ -5,68 +5,43 @@ import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useInView } from "react-intersection-observer";
 
-// Assets
-import logo from "/images/logo.png";
-import fountain2 from "/images/fountain2.png";
-import fountain3 from "/images/fountain3.png";
-import fountain4 from "/images/fountain4.jpeg";
-import fountain11 from "/videos/fountain11.mov";
-import fountain22 from "/videos/fountain22.MOV";
-import fountain33 from "/videos/fountain33.MOV";
-import fountain44 from "/videos/fountain44.MP4";
-import sprinkler1 from "/images/sprinkler1.jpeg";
-import sprinkler2 from "/images/sprinker2.jpeg";
-import sprinkler3 from "/images/sprinkler3.jpeg";
-import sprinkler11 from "/videos/sprinkler11.mp4";
-import sprinkler22 from "/videos/sprinkler22.mp4";
-import sprinkler33 from "/videos/sprinkler33.mp4";
-import sprinkler44 from "/videos/sprinkler44.MOV";
-import solar11 from "/videos/solar11.mp4";
-import drip from "/images/drip irrigation.jpeg";
-import swim11 from "/videos/swim11.MOV";
-import pool1 from "/images/pool1.jpg";
-import pool11 from "/videos/pool11.mp4";
-import pool22 from "/videos/pool22.mp4";
-import annal from "/videos/annal.mp4";
-import about from "/videos/about.mp4";
-
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("Water Fountains");
-  const [previewMedia, setPreviewMedia] = useState({ src: fountain22, type: "video" });
+  const [previewMedia, setPreviewMedia] = useState({ src: "/assets/videos/fountain-outdoor-annal-mangalore.mp4", type: "video" });
 
   const impactCardsRef = useRef(null);
 
   const galleryData = useMemo(() => ({
     "Water Fountains": [
-      { src: fountain22, type: "video", title: "Fountain Show" },
-      { src: fountain33, type: "video", title: "Fountain Show" },
-      { src: fountain3, type: "image", title: "Outdoor Fountain Display" },
-      { src: fountain44, type: "video", title: "Fountain Show" },
-      { src: fountain4, type: "image", title: "Outdoor Fountain Display" },
-      { src: fountain11, type: "video", title: "Interior Fountain Show" },
-      { src: fountain2, type: "image", title: "Outdoor Fountain with light show" },
+      { src: "/assets/videos/fountain-outdoor-lights-mangalore.mp4", type: "video", title: "Outdoor Fountain Show" },
+      { src: "/assets/videos/fountain-indoor-mangalore.mp4", type: "video", title: "Indoor Fountain on Glass" },
+      { src: "/assets/videos/fountain-outdoor-annal-mangalore.mp4", type: "video", title: "Outdoor Fountain" },
+      { src: "/assets/images/water-fountain-design-layout-mangalore.webp", type: "image", title: "Outdoor Fountain Design" },
+      { src: "/assets/videos/fountain-outdoor-mangalore.mp4", type: "video", title: "Fountain Show on Penguins" },
+      { src: "/assets/images/water-fountain-design-mangalore.webp", type: "image", title: "Outdoor Fountain Design" },
+      { src: "/assets/images/water-fountain-mangalore.webp", type: "image", title: "Classic Outdoor Fountain " },
     ],
     "Water Sprinklers": [
-      { src: sprinkler22, type: "video", title: "Rotating Sprinkler" },
-      { src: sprinkler1, type: "image", title: "Garden Sprinkler System" },
-      { src: sprinkler11, type: "video", title: "Sprinkler System over the landscape" },
-      { src: sprinkler2, type: "image", title: "Farm Sprinkler Setup" },
-      { src: sprinkler33, type: "video", title: "Sprinkler System on garden" },
-      { src: sprinkler44, type: "video", title: "Sprinkler System on garden" },
-      { src: sprinkler3, type: "image", title: "Farm Sprinkler Setup" },
+      { src: "/assets/videos/sprinkler-garden-outdoor-mangalore.mp4", type: "video", title: "Sprinkler on Garden" },
+      { src: "/assets/images/sprinklers-farm-mangalore.webp", type: "image", title: "Rotating Sprinkler System" },
+      { src: "/assets/videos/sprinkler-outdoor-mangalore.mp4", type: "video", title: "Sprinkler System over the landscape" },
+      { src: "/assets/images/sprinklers-mangalore.webp", type: "image", title: "Landscape Sprinkler Setup" },
+      { src: "/assets/videos/sprinkler-outdoor-school-mangalore.mp4", type: "video", title: "Sprinkler System on garden" },
+      { src: "/assets/videos/Sprinkler-garden-mangalore.mp4", type: "video", title: "Sprinkler System on garden" },
+      { src: "/assets/images/sprinkler-garden-mangalore.webp", type: "image", title: "Farm Sprinkler Setup" },
     ],
     "Solar Rooftop Panels": [
-      { src: solar11, type: "video", title: "Solar panel on rooftop" },
+      { src: "/assets/videos/solar-panel-mangalore.mp4", type: "video", title: "Solar panel on rooftop" },
     ],
     "Drip Irrigation Systems": [
-      { src: drip, type: "image", title: "Drip irrigation system" },
+      { src: "/assets/images/drip-irrigation-mangalore.webp", type: "image", title: "Drip irrigation system" },
     ],
     "Swimming Pools & Ponds": [
-      { src: swim11, type: "video", title: "Interior Pool for home" },
-      { src: pool11, type: "video", title: "Swimming Pool for home" },
-      { src: pool1, type: "image", title: "Luxury Pool Design" },
-      { src: pool22, type: "video", title: "Swimming Pool for home" },
+      { src: "/assets/videos/Indoor-swimming-pool-mangalore.mp4", type: "video", title: "Interior Pool for home" },
+      { src: "/assets/videos/Swimming-pool-mangalore.mp4", type: "video", title: "Swimming Pool for home" },
+      { src: "/assets/images/swimming-pool-mangalore.webp", type: "image", title: "Luxury Pool Design" },
+      { src: "/assets/videos/swimming-pool-mangalore-outdoor.mp4", type: "video", title: "Swimming Pool for home" },
     ],
   }), []);
 
@@ -121,7 +96,7 @@ function App() {
       <nav className="navbar">
         <div className="logo">
           <a href="/">
-            <img src={logo} alt="Logo" className="logo" />
+            <img src={"/assets/images/annal-electricals-logo-mangalore.webp"} alt="Logo" className="logo" />
           </a>
           <span>Annal Electricals & Irrigation System</span>
         </div>
@@ -140,7 +115,7 @@ function App() {
       {/* Hero Section */}
       <section className="hero" id="home" data-aos="fade-up">
         <video className="hero-video" autoPlay loop muted playsInline preload="auto">
-          <source src={annal} type="video/mp4" />
+          <source src={"/assets/videos/annal-hero-mangalore.mp4"} type="video/mp4" />
         </video>
         <div className="hero-overlay"></div>
         <div className="hero-content">
@@ -174,7 +149,7 @@ function App() {
           <span className="dealer-label">AUTHORIZED DEALERS</span>
           <div className="dealer-brand">
             <img 
-              src="/images/rainbird-logo.png" 
+              src="/assets/images/rainbird-logo.webp" 
               alt="Rain Bird Logo" 
               className="dealer-logo" 
             />
@@ -191,11 +166,11 @@ function App() {
         <h2>Our   <span>Specialized</span> Solutions !</h2>
         <div className="services-grid">
           {[
-            { title: "Automation in Irrigation", desc: "Reduces manpower with advanced fog systems, drip irrigation, and Rain Bird automated sprinklers.", img: "/images/drip irrigation.jpeg" },
-            { title: "Water Fountains", desc: "Crafting elegant water fountains for homes, gardens, and commercial spaces.", img: "/images/fountain2.png" },
-            { title: "Swimming Pools", desc: "Crafting pools that bring luxury, comfort, and lasting quality.", img: "/images/pool1.jpg" },
-            { title: "Electrical Works", desc: "Specializing in HT and TC installations with a commitment to reliability.", img: "/images/service4.png" },
-            { title: "Rooftop Solar Panel", desc: "Harness the sun’s power for a cleaner, cost-saving energy future.", img: "/images/service5.jpg" }
+            { title: "Automation in Irrigation", desc: "Reduces manpower with advanced fog systems, drip irrigation, and Rain Bird automated sprinklers.", img: "/assets/images/drip-irrigation-mangalore.webp" },
+            { title: "Water Fountains", desc: "Crafting elegant water fountains for homes, gardens, and commercial spaces.", img: "/assets/images/water-fountain-lights-mangalore.webp" },
+            { title: "Swimming Pools", desc: "Crafting pools that bring luxury, comfort, and lasting quality.", img: "/assets/images/swimming-pool-mangalore.webp" },
+            { title: "Electrical Works", desc: "Specializing in HT and TC installations with a commitment to reliability.", img: "/assets/images/hightension-mangalore.webp" },
+            { title: "Rooftop Solar Panel", desc: "Harness the sun’s power for a cleaner, cost-saving energy future.", img: "/assets/images/solar-panels-mangalore.webp" }
           ].map((service, i) => (
             <div className="service-card" key={i} data-aos="fade-up" data-aos-delay={i * 100}>
               <div className="service-card-inner">
@@ -237,7 +212,7 @@ function App() {
       <section className="about" id="Know Us" data-aos="fade-up" ref={aboutRef}>
         {aboutInView ? (
           <video className="about-video" autoPlay loop muted playsInline>
-            <source src={about} type="video/mp4" />
+            <source src={"/assets/videos/about.mp4"} type="video/mp4" />
           </video>
         ) : (
           <div className="about-video-placeholder" style={{ backgroundColor: '#1a1a1a', width: '100%', height: '100%', position: 'absolute' }} />
@@ -305,7 +280,7 @@ function App() {
       <footer className="footer" id="contact">
         <div className="footer-content">
           <div className="footer-logo">
-            <img src={logo} alt="Footer Logo" className="footer-logo-img" />
+            <img src={"/assets/images/annal-electricals-logo-mangalore.webp"} alt="Footer Logo" className="footer-logo-img" />
             <p><strong>Main Office:</strong> <a href="https://maps.app.goo.gl/WZToMYWRYFkjCve49">Kotimura 5th Cross, Kulshekar, Mangalore, 575005</a></p>
             <p><strong>📞</strong> <a href="tel:+919686612726">+91 9686612726</a></p>
             <p><strong>✉️</strong> <a href="mailto:annalelectricals72@gmail.com">annalelectricals72@gmail.com</a></p>
