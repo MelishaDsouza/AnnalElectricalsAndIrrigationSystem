@@ -95,21 +95,21 @@ function App() {
     <div className="App">
       <nav className="navbar">
         <div className="logo">
-          <a href="/">
-            <img src={"/assets/images/annal-electricals-logo-mangalore.webp"} alt="Logo" className="logo" />
+          <a href="/" aria-label="Annal Electricals Home">
+            <img src={"/assets/images/annal-electricals-logo-mangalore.webp"} alt="Annal Electricals Logo" className="logo" width="50" height="50" />
           </a>
           <span>Annal Electricals & Irrigation System</span>
         </div>
         <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
           {["home", "Our Services", "Know Us", "Our Work", "contact"].map((link) => (
             <li key={link}>
-              <a href={`#${link}`} onClick={() => setIsMenuOpen(false)}>
+              <a href={`#${link}`} aria-label={link === "home" ? "Home" : `Navigate to ${link}`} onClick={() => setIsMenuOpen(false)}>
                 {link === "home" ? "Home" : link.charAt(0).toUpperCase() + link.slice(1)}
               </a>
             </li>
           ))}
         </ul>
-        <div className="hamburger" onClick={toggleMenu}>☰</div>
+        <div className="hamburger" onClick={toggleMenu} aria-label="Toggle navigation menu">☰</div>
       </nav>
 
       {/* Hero Section */}
@@ -136,7 +136,7 @@ function App() {
             { val: "24/7", label: "Support Availability", delay: 300 }
           ].map((card, i) => (
             <div className="card" key={i} data-aos="fade-up" data-aos-delay={card.delay || 0}>
-              <h3>{card.val}</h3>
+              <h2>{card.val}</h2>
               <p>{card.label}</p>
             </div>
           ))}
@@ -150,8 +150,11 @@ function App() {
           <div className="dealer-brand">
             <img 
               src="/assets/images/rainbird-logo.webp" 
-              alt="Rain Bird Logo" 
+              alt="Rain Bird Logo - Authorized Dealer" 
               className="dealer-logo" 
+              width="200"
+              height="100"
+              loading="lazy"
             />
           </div>
           <p className="dealer-description">
@@ -182,7 +185,7 @@ function App() {
                 </div>
                 {/* Back Side: Image */}
                 <div className="service-card-back">
-                  <img src={service.img} alt={service.title} />
+                  <img src={service.img} alt={service.title} width="400" height="300" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -211,7 +214,7 @@ function App() {
       {/* About Section */}
       <section className="about" id="Know Us" data-aos="fade-up" ref={aboutRef}>
         {aboutInView ? (
-          <video className="about-video" autoPlay loop muted playsInline>
+          <video className="about-video" autoPlay loop muted playsInline preload="metadata">
             <source src={"/assets/videos/about.mp4"} type="video/mp4" />
           </video>
         ) : (
@@ -244,9 +247,9 @@ function App() {
         <div className="gallery-container">
           <div className="gallery-main">
             {previewMedia.type === "video" ? (
-              <video key={previewMedia.src} src={previewMedia.src} autoPlay loop muted playsInline className="gallery-video" />
+              <video key={previewMedia.src} src={previewMedia.src} autoPlay loop muted playsInline preload="metadata" className="gallery-video" />
             ) : (
-              <img src={previewMedia.src} alt="Preview" />
+              <img src={previewMedia.src} alt="Preview" width="600" height="400" />
             )}
           </div>
 
@@ -267,7 +270,7 @@ function App() {
                     onMouseOut={(e) => { e.target.pause(); e.target.currentTime = 0; }}
                   />
                 ) : (
-                  <img src={item.src} alt={item.title} />
+                  <img src={item.src} alt={item.title} width="120" height="90" loading="lazy" />
                 )}
                 <div className="gallery-info"><h3>{item.title}</h3></div>
               </div>
@@ -280,31 +283,31 @@ function App() {
       <footer className="footer" id="contact">
         <div className="footer-content">
           <div className="footer-logo">
-            <img src={"/assets/images/annal-electricals-logo-mangalore.webp"} alt="Footer Logo" className="footer-logo-img" />
-            <p><strong>Main Office:</strong> <a href="https://maps.app.goo.gl/WZToMYWRYFkjCve49">Kotimura 5th Cross, Kulshekar, Mangalore, 575005</a></p>
-            <p><strong>📞</strong> <a href="tel:+919686612726">+91 9686612726</a></p>
-            <p><strong>✉️</strong> <a href="mailto:annalelectricals72@gmail.com">annalelectricals72@gmail.com</a></p>
+            <img src={"/assets/images/annal-electricals-logo-mangalore.webp"} alt="Annal Electricals Footer Logo" className="footer-logo-img" width="80" height="80" loading="lazy" />
+            <p><strong>Main Office:</strong> <a href="https://maps.app.goo.gl/WZToMYWRYFkjCve49" aria-label="View Annal Electricals on Google Maps">Kotimura 5th Cross, Kulshekar, Mangalore, 575005</a></p>
+            <p><strong>📞</strong> <a href="tel:+919686612726" aria-label="Call +91 9686612726">+91 9686612726</a></p>
+            <p><strong>✉️</strong> <a href="mailto:annalelectricals72@gmail.com" aria-label="Email Annal Electricals">annalelectricals72@gmail.com</a></p>
             <div className="social-icons">
-              <a href="https://facebook.com"><i className="fab fa-facebook-f"></i></a>
-              <a href="https://instagram.com/annalelectricals"><i className="fab fa-instagram"></i></a>
-              <a href="https://wa.me/919686612726"><i className="fab fa-whatsapp"></i></a>
+              <a href="https://facebook.com" aria-label="Follow us on Facebook"><i className="fab fa-facebook-f"></i></a>
+              <a href="https://instagram.com/annalelectricals" aria-label="Follow us on Instagram"><i className="fab fa-instagram"></i></a>
+              <a href="https://wa.me/919686612726" aria-label="Contact us on WhatsApp"><i className="fab fa-whatsapp"></i></a>
             </div>
           </div>
           <div className="footer-column">
-            <h4>Our Services</h4>
+            <h3>Our Services</h3>
             <ul>
-              <li><a href="#Our Services">Irrigation Systems</a></li>
-              <li><a href="#Our Services">Electrical Works</a></li>
-              <li><a href="#Our Services">Water Fountains</a></li>
-              <li><a href="#Our Services">Swimming Pools</a></li>
+              <li><a href="#Our Services" aria-label="View Irrigation Systems">Irrigation Systems</a></li>
+              <li><a href="#Our Services" aria-label="View Electrical Works">Electrical Works</a></li>
+              <li><a href="#Our Services" aria-label="View Water Fountains">Water Fountains</a></li>
+              <li><a href="#Our Services" aria-label="View Swimming Pools">Swimming Pools</a></li>
             </ul>
           </div>
           <div className="footer-column">
-            <h4>Quick Links</h4>
+            <h3>Quick Links</h3>
             <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#Know Us">About Us</a></li>
-              <li><a href="#Our Work">Gallery</a></li>
+              <li><a href="#home" aria-label="Go to Home section">Home</a></li>
+              <li><a href="#Know Us" aria-label="Go to About Us section">About Us</a></li>
+              <li><a href="#Our Work" aria-label="Go to Gallery section">Gallery</a></li>
             </ul>
           </div>
         </div>

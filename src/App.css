@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Poppins";
+  font-display: swap;
+}
+
 body {
   font-family: "Poppins", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
@@ -15,6 +20,7 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+  color: #b6d945;
 }
 
 /* Navbar */
@@ -201,7 +207,7 @@ a {
 }
 
 /* 📝 Card text */
-.impact-cards h3 {
+.impact-cards h2 {
   font-size: 1.25rem;
   color: #2c502c;
   margin-bottom: 0.4rem;
@@ -317,6 +323,7 @@ a {
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d; /* Required for children to live in 3D space */
+  will-change: transform;
 }
 
 /* The Flip Trigger */
@@ -918,7 +925,7 @@ a {
   min-width: 180px;
 }
 
-.footer-column h4 {
+.footer-column h3 {
   margin-bottom: 1rem;
   color: #226521;
   font-size: 1.1rem;
@@ -926,7 +933,7 @@ a {
   position: relative;
 }
 
-.footer-column h4::after {
+.footer-column h3::after {
   content: "";
   display: block;
   width: 40px;
@@ -1033,7 +1040,7 @@ a {
     align-items: center;
   }
 
-  .footer-column h4 {
+  .footer-column h3 {
     margin-bottom: 0.8rem;
   }
 
