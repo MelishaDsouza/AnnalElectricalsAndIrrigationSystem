@@ -10,15 +10,9 @@ export default defineConfig({
     }),
   ],
   build: {
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        dead_code: true,
-      },
-      output: {
-        comments: false,
-      },
+    minify: 'esbuild',
+    esbuild: {
+      drop: ['console'],
     },
     rollupOptions: {
       output: {
