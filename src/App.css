@@ -20,7 +20,8 @@ body {
 a {
   text-decoration: none;
   color: inherit;
-  color: #b6d945;
+  color: #d4e157;
+  font-weight: 500;
 }
 
 /* Navbar */
@@ -1106,4 +1107,21 @@ a {
     font-size: 1.7rem; /* ↓ smaller hamburger */
     cursor: pointer;
   }
+}
+
+/* ⚡ Performance Optimizations */
+/* Reduce forced reflows on animated elements */
+.gallery-list-item {
+  will-change: transform;
+}
+
+/* Contain layout for gallery to prevent reflow cascades */
+.gallery-container {
+  contain: layout style;
+}
+
+/* Font loading optimization */
+@font-face {
+  font-family: "Playfair Display";
+  font-display: swap;
 }

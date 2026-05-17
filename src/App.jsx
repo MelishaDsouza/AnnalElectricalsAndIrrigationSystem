@@ -64,15 +64,19 @@ function App() {
     if (!cardsContainer) return;
   
     let interval;
+    let cardWidth = 0;
+    
     const startAutoScroll = () => {
       if (window.innerWidth <= 768) {
         const card = cardsContainer.querySelector(".card");
         if (!card) return;
-        const scrollAmount = card.offsetWidth + 16;
+        // Calculate card width once, not in the interval
+        cardWidth = card.offsetWidth + 16;
         let scrollPosition = 0;
 
+        clearInterval(interval);
         interval = setInterval(() => {
-          scrollPosition += scrollAmount;
+          scrollPosition += cardWidth;
           if (scrollPosition >= cardsContainer.scrollWidth - cardsContainer.clientWidth) {
             scrollPosition = 0;
           }
@@ -96,7 +100,7 @@ function App() {
       <nav className="navbar">
         <div className="logo">
           <a href="/" aria-label="Annal Electricals Home">
-            <img src={"/assets/images/annal-electricals-logo-mangalore.webp"} alt="Annal Electricals Logo" className="logo" width="50" height="50" />
+            <img src={"/assets/images/annal-electricals-logo-mangalore.webp"} alt="Annal Electricals Logo" className="logo" width="50" height="50" decoding="async" />
           </a>
           <span>Annal Electricals & Irrigation System</span>
         </div>
@@ -114,7 +118,7 @@ function App() {
 
       {/* Hero Section */}
       <section className="hero" id="home" data-aos="fade-up">
-        <video className="hero-video" autoPlay loop muted playsInline preload="auto">
+        <video className="hero-video" autoPlay loop muted playsInline preload="auto" fetchPriority="high">
           <source src={"/assets/videos/annal-hero-mangalore.mp4"} type="video/mp4" />
         </video>
         <div className="hero-overlay"></div>
@@ -155,6 +159,7 @@ function App() {
               width="200"
               height="100"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <p className="dealer-description">
@@ -185,7 +190,7 @@ function App() {
                 </div>
                 {/* Back Side: Image */}
                 <div className="service-card-back">
-                  <img src={service.img} alt={service.title} width="400" height="300" loading="lazy" />
+                  <img src={service.img} alt={service.title} width="400" height="300" loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>
@@ -249,7 +254,7 @@ function App() {
             {previewMedia.type === "video" ? (
               <video key={previewMedia.src} src={previewMedia.src} autoPlay loop muted playsInline preload="metadata" className="gallery-video" />
             ) : (
-              <img src={previewMedia.src} alt="Preview" width="600" height="400" />
+              <img src={previewMedia.src} alt="Preview" width="600" height="400" decoding="async" />
             )}
           </div>
 
@@ -270,7 +275,7 @@ function App() {
                     onMouseOut={(e) => { e.target.pause(); e.target.currentTime = 0; }}
                   />
                 ) : (
-                  <img src={item.src} alt={item.title} width="120" height="90" loading="lazy" />
+                  <img src={item.src} alt={item.title} width="120" height="90" loading="lazy" decoding="async" />
                 )}
                 <div className="gallery-info"><h3>{item.title}</h3></div>
               </div>
@@ -283,7 +288,7 @@ function App() {
       <footer className="footer" id="contact">
         <div className="footer-content">
           <div className="footer-logo">
-            <img src={"/assets/images/annal-electricals-logo-mangalore.webp"} alt="Annal Electricals Footer Logo" className="footer-logo-img" width="80" height="80" loading="lazy" />
+            <img src={"/assets/images/annal-electricals-logo-mangalore.webp"} alt="Annal Electricals Footer Logo" className="footer-logo-img" width="80" height="80" loading="lazy" decoding="async" />
             <p><strong>Main Office:</strong> <a href="https://maps.app.goo.gl/WZToMYWRYFkjCve49" aria-label="View Annal Electricals on Google Maps">Kotimura 5th Cross, Kulshekar, Mangalore, 575005</a></p>
             <p><strong>📞</strong> <a href="tel:+919686612726" aria-label="Call +91 9686612726">+91 9686612726</a></p>
             <p><strong>✉️</strong> <a href="mailto:annalelectricals72@gmail.com" aria-label="Email Annal Electricals">annalelectricals72@gmail.com</a></p>
