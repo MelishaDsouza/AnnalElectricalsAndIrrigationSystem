@@ -51,7 +51,11 @@ function App() {
   }, [activeCategory, galleryData]);
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
+    // Defer AOS initialization for better perceived performance
+    const timer = setTimeout(() => {
+      AOS.init({ duration: 800, once: true, delay: 0, offset: 50 });
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
 
   const { ref: aboutRef, inView: aboutInView } = useInView({
@@ -238,11 +242,13 @@ function App() {
       <section className="gallery" id="Our Work" data-aos="fade-up">
         <h2 className="gallery-heading">Navigating <span>Our Masterpieces</span></h2>
         <div className="gallery-categories">
-          {Object.keys(galleryData).map((category) => (
+          {Object.keys(galleryData).map((category, i) => (
             <button
               key={category}
               className={`category-btn ${activeCategory === category ? "active" : ""}`}
               onClick={() => setActiveCategory(category)}
+              data-aos="fade-up"
+              data-aos-delay={i * 50}
             >
               {category}
             </button>
@@ -269,13 +275,11 @@ function App() {
                   <video 
                     src={item.src} 
                     muted 
-                    preload="metadata" 
+                    preload="none" 
                     className="thumb-video" 
-                    onMouseOver={(e) => e.target.play()} 
-                    onMouseOut={(e) => { e.target.pause(); e.target.currentTime = 0; }}
                   />
                 ) : (
-                  <img src={item.src} alt={item.title} width="120" height="90" loading="lazy" decoding="async" />
+                  <img src={item.src} alt={item.title} width="120" height="90" loading={i === 0 ? "eager" : "lazy"} decoding="async" />
                 )}
                 <div className="gallery-info"><h3>{item.title}</h3></div>
               </div>

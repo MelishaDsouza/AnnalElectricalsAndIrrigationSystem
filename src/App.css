@@ -8,6 +8,9 @@
 @font-face {
   font-family: "Poppins";
   font-display: swap;
+  ascent-override: 110%;
+  descent-override: 20%;
+  line-gap-override: 0%;
 }
 
 body {
