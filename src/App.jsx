@@ -51,11 +51,16 @@ function App() {
   }, [activeCategory, galleryData]);
 
   useEffect(() => {
-    // Defer AOS initialization for better perceived performance
-    const timer = setTimeout(() => {
-      AOS.init({ duration: 800, once: true, delay: 0, offset: 50 });
-    }, 100);
-    return () => clearTimeout(timer);
+    // Defer AOS initialization using requestIdleCallback for better performance
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        AOS.init({ duration: 600, once: true, delay: 0, offset: 30 });
+      });
+    } else {
+      setTimeout(() => {
+        AOS.init({ duration: 600, once: true, delay: 0, offset: 30 });
+      }, 1000);
+    }
   }, []);
 
   const { ref: aboutRef, inView: aboutInView } = useInView({
@@ -69,19 +74,25 @@ function App() {
   
     let interval;
     let cardWidth = 0;
+    let maxScroll = 0;
+    let scrollPosition = 0;
+    
+    const calculateDimensions = () => {
+      const card = cardsContainer.querySelector(".card");
+      if (!card) return;
+      cardWidth = card.offsetWidth + 16;
+      maxScroll = cardsContainer.scrollWidth - cardsContainer.clientWidth;
+    };
     
     const startAutoScroll = () => {
       if (window.innerWidth <= 768) {
-        const card = cardsContainer.querySelector(".card");
-        if (!card) return;
-        // Calculate card width once, not in the interval
-        cardWidth = card.offsetWidth + 16;
-        let scrollPosition = 0;
+        calculateDimensions();
+        scrollPosition = 0;
 
         clearInterval(interval);
         interval = setInterval(() => {
           scrollPosition += cardWidth;
-          if (scrollPosition >= cardsContainer.scrollWidth - cardsContainer.clientWidth) {
+          if (scrollPosition >= maxScroll) {
             scrollPosition = 0;
           }
           cardsContainer.scrollTo({ left: scrollPosition, behavior: "smooth" });
@@ -122,7 +133,7 @@ function App() {
 
       {/* Hero Section */}
       <section className="hero" id="home" data-aos="fade-up">
-        <video className="hero-video" autoPlay loop muted playsInline preload="auto" fetchPriority="high">
+        <video className="hero-video" autoPlay loop muted playsInline preload="metadata" fetchPriority="high" poster="/assets/images/hero-poster.jpg">
           <source src={"/assets/videos/annal-hero-mangalore.mp4"} type="video/mp4" />
         </video>
         <div className="hero-overlay"></div>

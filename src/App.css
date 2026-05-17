@@ -11,6 +11,13 @@
   ascent-override: 110%;
   descent-override: 20%;
   line-gap-override: 0%;
+  src: url('/assets/fonts/poppins.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-display: swap;
+  src: url('/assets/fonts/playfair.woff2') format('woff2');
 }
 
 body {
@@ -160,11 +167,12 @@ a {
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  transition: transform 0.3s, background 0.3s;
+  transition: transform 0.3s ease, background 0.3s ease;
+  will-change: transform;
 }
 
 .hero button:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: #ffd700;
 }
 /* 🌿 Impact Cards - Static, Clean Version */
@@ -197,8 +205,10 @@ a {
   border-radius: 20px;
   padding: 1.2rem 1.5rem;
   text-align: center;
-  box-shadow: 6px 6px 18px rgba(50, 140, 71, 0.09),
-              -3px -4px 10px rgba(12, 12, 12, 0.7);
+  box-shadow: 3px 3px 12px rgba(50, 140, 71, 0.1),
+              -2px -2px 8px rgba(12, 12, 12, 0.05);
+  will-change: transform;
+  transition: transform 0.3s ease;
 }
 
 /* spacing fix for first card */
@@ -354,7 +364,8 @@ a {
 .service-card-front {
   background: #f3f76a;
   color: black;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  will-change: transform;
 }
 
 .title-spacer {
@@ -645,21 +656,31 @@ a {
   align-items: center;
   background: #547e3f;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   cursor: pointer;
-  transition: all 0.3s ease-in;
+  transition: transform 0.3s ease-in;
   overflow: hidden;
+  will-change: transform;
+  position: relative;
 }
 
 .gallery-list-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(26, 21, 21, 0.1);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .gallery-list-item.active {
   background: #12751b;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  border-left: 4px solid #07690f;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+}
+
+.gallery-list-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #07690f;
 }
 
 .gallery-list-item img {

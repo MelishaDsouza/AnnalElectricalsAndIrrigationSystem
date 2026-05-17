@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "optimize:images": "node scripts/optimize-images.js",
+    "optimize:images:sharp": "node scripts/optimize-images-sharp.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",
