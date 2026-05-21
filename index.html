@@ -17,8 +17,17 @@
     <!-- Prefetch future navigations -->
     <link rel="prefetch" href="/assets/index.js" as="script" />
     
-    <!-- Preload critical fonts -->
+    <!-- Preload critical fonts with higher priority -->
+    <link rel="preload" href="/assets/fonts/poppins.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/playfair.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fa-brands.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <!-- Preload critical images -->
+    <link rel="preload" href="/assets/images/annal-electricals-logo-mangalore.webp" as="image" />
+    
+    <!-- Prefetch video poster images for faster perceived load -->
+    <link rel="prefetch" href="/assets/images/hero-poster.jpg" as="image" />
+    <link rel="prefetch" href="/assets/images/about-poster.jpg" as="image" />
     
     <!-- Critical CSS inline to eliminate render blocking -->
     <style>

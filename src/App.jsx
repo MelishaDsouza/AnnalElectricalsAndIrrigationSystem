@@ -76,16 +76,22 @@ function App() {
     let cardWidth = 0;
     let maxScroll = 0;
     let scrollPosition = 0;
+    let isCalculated = false;
     
     const calculateDimensions = () => {
+      if (isCalculated) return; // Avoid recalculation
       const card = cardsContainer.querySelector(".card");
       if (!card) return;
-      cardWidth = card.offsetWidth + 16;
+      
+      // Use getBoundingClientRect to avoid forced layout thrashing
+      cardWidth = card.getBoundingClientRect().width + 16;
       maxScroll = cardsContainer.scrollWidth - cardsContainer.clientWidth;
+      isCalculated = true;
     };
     
     const startAutoScroll = () => {
       if (window.innerWidth <= 768) {
+        isCalculated = false; // Reset flag on resize
         calculateDimensions();
         scrollPosition = 0;
 
@@ -100,11 +106,16 @@ function App() {
       }
     };
   
+    const handleResize = () => {
+      startAutoScroll();
+    };
+    
     startAutoScroll();
-    window.addEventListener("resize", startAutoScroll);
+    window.addEventListener("resize", handleResize);
+    
     return () => {
       clearInterval(interval);
-      window.removeEventListener("resize", startAutoScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -205,7 +216,18 @@ function App() {
                 </div>
                 {/* Back Side: Image */}
                 <div className="service-card-back">
-                  <img src={service.img} alt={service.title} width="400" height="300" loading="lazy" decoding="async" />
+                  <picture>
+                    <img 
+                      src={service.img} 
+                      alt={service.title} 
+                      width="400" 
+                      height="300" 
+                      loading="lazy" 
+                      decoding="async" 
+                      srcSet={`${service.img.replace('.webp', '-mobile.webp')} 480w, ${service.img.replace('.webp', '-tablet.webp')} 768w, ${service.img} 1024w`}
+                      sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
+                    />
+                  </picture>
                 </div>
               </div>
             </div>
@@ -234,7 +256,15 @@ function App() {
       {/* About Section */}
       <section className="about" id="Know Us" data-aos="fade-up" ref={aboutRef}>
         {aboutInView ? (
-          <video className="about-video" autoPlay loop muted playsInline preload="metadata">
+          <video 
+            className="about-video" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            preload="metadata"
+            poster="/assets/images/about-poster.jpg"
+          >
             <source src={"/assets/videos/about.mp4"} type="video/mp4" />
           </video>
         ) : (
@@ -269,9 +299,29 @@ function App() {
         <div className="gallery-container">
           <div className="gallery-main">
             {previewMedia.type === "video" ? (
-              <video key={previewMedia.src} src={previewMedia.src} autoPlay loop muted playsInline preload="metadata" className="gallery-video" />
+              <video 
+                key={previewMedia.src} 
+                src={previewMedia.src} 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                preload="metadata" 
+                className="gallery-video"
+                poster={previewMedia.src.replace(/\.mp4$/, '-poster.jpg')}
+              />
             ) : (
-              <img src={previewMedia.src} alt="Preview" width="600" height="400" decoding="async" />
+              <picture>
+                <img 
+                  src={previewMedia.src} 
+                  alt={previewMedia.title || "Preview"} 
+                  width="600" 
+                  height="400" 
+                  decoding="async"
+                  srcSet={`${previewMedia.src.replace('.webp', '-mobile.webp')} 480w, ${previewMedia.src.replace('.webp', '-tablet.webp')} 768w, ${previewMedia.src} 1024w`}
+                  sizes="(max-width: 480px) 100vw, (max-width: 768px) 90vw, 70vw"
+                />
+              </picture>
             )}
           </div>
 
@@ -286,11 +336,25 @@ function App() {
                   <video 
                     src={item.src} 
                     muted 
-                    preload="none" 
+                    preload="none"
+                    poster={item.src.replace(/\.mp4$/, '-poster.jpg')}
                     className="thumb-video" 
                   />
                 ) : (
-                  <img src={item.src} alt={item.title} width="120" height="90" loading={i === 0 ? "eager" : "lazy"} decoding="async" />
+                  <picture>
+                    <source 
+                      srcSet={`${item.src.replace('.webp', '-thumb.webp')} 1x, ${item.src.replace('.webp', '-thumb-2x.webp')} 2x`}
+                      type="image/webp"
+                    />
+                    <img 
+                      src={item.src.replace('.webp', '-thumb.webp')} 
+                      alt={item.title} 
+                      width="120" 
+                      height="90" 
+                      loading={i === 0 ? "eager" : "lazy"} 
+                      decoding="async"
+                    />
+                  </picture>
                 )}
                 <div className="gallery-info"><h3>{item.title}</h3></div>
               </div>

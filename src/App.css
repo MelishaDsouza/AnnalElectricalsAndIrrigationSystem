@@ -11,12 +11,17 @@
   ascent-override: 110%;
   descent-override: 20%;
   line-gap-override: 0%;
+  size-adjust: 102%;
   src: url('/assets/fonts/poppins.woff2') format('woff2');
 }
 
 @font-face {
   font-family: "Playfair Display";
   font-display: swap;
+  ascent-override: 115%;
+  descent-override: 25%;
+  line-gap-override: 2%;
+  size-adjust: 105%;
   src: url('/assets/fonts/playfair.woff2') format('woff2');
 }
 
@@ -1144,8 +1149,3 @@ a {
   contain: layout style;
 }
 
-/* Font loading optimization */
-@font-face {
-  font-family: "Playfair Display";
-  font-display: swap;
-}

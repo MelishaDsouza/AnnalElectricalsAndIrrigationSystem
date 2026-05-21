@@ -1,76 +1,188 @@
 #!/usr/bin/env node
 
 /**
- * Advanced Image Compression Script using Sharp
- * Reduces image file sizes significantly with quality optimization
- * 
- * Installation:
- * npm install --save-dev sharp
+ * Advanced Image Optimization Script for Mobile
+ * Generates responsive image variants optimized for different screen sizes
  * 
  * Usage: node scripts/optimize-images-sharp.js
+ * 
+ * Requirements:
+ * 1. Install sharp: npm install --save-dev sharp
+ * 2. Images should already be in WebP format
+ * 3. Creates mobile (480px), tablet (768px), and desktop (1024px+) variants
+ * 
+ * This script:
+ * - Reduces file sizes for mobile (5MB+ savings possible)
+ * - Creates responsive image srcset variants
+ * - Optimizes video thumbnails
+ * - Maintains quality while reducing bandwidth
  */
 
-try {
-  const sharp = require('sharp');
-  const fs = require('fs');
-  const path = require('path');
+import sharp from 'sharp';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-  const imageDir = path.join(__dirname, '../public/assets/images');
-  const outputDir = path.join(__dirname, '../public/assets/images-optimized');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-  }
+const imageDir = path.join(__dirname, '../public/assets/images');
 
-  const images = fs.readdirSync(imageDir).filter(f => /\.(webp|jpg|png)$/i.test(f));
+// Define image sizes for responsive images
+const imageSizes = {
+  // Main gallery/service images: full width display
+  'water-fountain-lights-mangalore': [
+    { name: '-mobile', width: 480, height: 360, quality: 75 },
+    { name: '-tablet', width: 768, height: 576, quality: 80 },
+    { name: '', width: 1024, height: 768, quality: 85 } // default
+  ],
+  'swimming-pool-mangalore': [
+    { name: '-mobile', width: 480, height: 320, quality: 75 },
+    { name: '-tablet', width: 768, height: 512, quality: 80 },
+    { name: '', width: 1024, height: 682, quality: 85 }
+  ],
+  'solar-panels-mangalore': [
+    { name: '-mobile', width: 480, height: 360, quality: 75 },
+    { name: '-tablet', width: 768, height: 576, quality: 80 },
+    { name: '', width: 1024, height: 768, quality: 85 }
+  ],
+  'drip-irrigation-mangalore': [
+    { name: '-mobile', width: 480, height: 360, quality: 75 },
+    { name: '-tablet', width: 768, height: 576, quality: 80 },
+    { name: '', width: 1024, height: 768, quality: 85 }
+  ],
+  'hightension-mangalore': [
+    { name: '-mobile', width: 480, height: 360, quality: 75 },
+    { name: '-tablet', width: 768, height: 576, quality: 80 },
+    { name: '', width: 1024, height: 768, quality: 85 }
+  ],
+  // Thumbnails for gallery (120x90)
+  'water-fountain-design-layout-mangalore': [
+    { name: '-thumb', width: 120, height: 90, quality: 75 },
+    { name: '-thumb-2x', width: 240, height: 180, quality: 80 }
+  ],
+  'water-fountain-design-mangalore': [
+    { name: '-thumb', width: 120, height: 90, quality: 75 },
+    { name: '-thumb-2x', width: 240, height: 180, quality: 80 }
+  ],
+  'water-fountain-mangalore': [
+    { name: '-thumb', width: 120, height: 90, quality: 75 },
+    { name: '-thumb-2x', width: 240, height: 180, quality: 80 }
+  ],
+  'sprinklers-farm-mangalore': [
+    { name: '-thumb', width: 120, height: 90, quality: 75 },
+    { name: '-thumb-2x', width: 240, height: 180, quality: 80 }
+  ],
+  'sprinklers-mangalore': [
+    { name: '-thumb', width: 120, height: 90, quality: 75 },
+    { name: '-thumb-2x', width: 240, height: 180, quality: 80 }
+  ],
+  'sprinkler-garden-mangalore': [
+    { name: '-thumb', width: 120, height: 90, quality: 75 },
+    { name: '-thumb-2x', width: 240, height: 180, quality: 80 }
+  ],
+  // Logos
+  'annal-electricals-logo-mangalore': [
+    { name: '', width: 166, height: 166, quality: 85 }
+  ],
+  'rainbird-logo': [
+    { name: '', width: 200, height: 100, quality: 85 }
+  ]
+};
 
-  console.log('🚀 Starting Image Compression...\n');
+async function optimizeImage(imagePath, imageName, sizes) {
+  try {
+    const ext = path.extname(imagePath);
+    const baseName = path.basename(imagePath, ext);
+    const dir = path.dirname(imagePath);
 
-  let totalOriginal = 0;
-  let totalOptimized = 0;
+    for (const size of sizes) {
+      const outputName = `${baseName}${size.name}${ext}`;
+      const outputPath = path.join(dir, outputName);
 
-  Promise.all(images.map(async (file) => {
-    const inputPath = path.join(imageDir, file);
-    const outputPath = path.join(outputDir, file);
-    
-    const stats = fs.statSync(inputPath);
-    const originalSize = stats.size;
-    totalOriginal += originalSize;
-
-    try {
-      const pipeline = sharp(inputPath);
-
-      // Optimize based on format
-      if (file.endsWith('.webp')) {
-        pipeline.webp({ quality: 75, alphaQuality: 90 });
-      } else if (file.endsWith('.jpg') || file.endsWith('.jpeg')) {
-        pipeline.jpeg({ quality: 75, progressive: true });
-      } else if (file.endsWith('.png')) {
-        pipeline.png({ compressionLevel: 9, quality: 80 });
+      // Skip if trying to overwrite the original file
+      if (outputPath === imagePath) {
+        continue;
       }
 
-      await pipeline.toFile(outputPath);
-      
-      const optimizedStats = fs.statSync(outputPath);
-      const optimizedSize = optimizedStats.size;
-      totalOptimized += optimizedSize;
-      
-      const savings = ((originalSize - optimizedSize) / originalSize * 100).toFixed(1);
-      console.log(`✅ ${file.padEnd(40)} ${(originalSize/1024).toFixed(1)}KB → ${(optimizedSize/1024).toFixed(1)}KB (${savings}% saved)`);
-    } catch (err) {
-      console.error(`❌ Error processing ${file}:`, err.message);
+      // Skip if file already exists and is recent
+      if (fs.existsSync(outputPath)) {
+        const stats = fs.statSync(outputPath);
+        const age = Date.now() - stats.mtimeMs;
+        if (age < 86400000) { // Less than 24 hours old
+          continue;
+        }
+      }
+
+      await sharp(imagePath)
+        .resize(size.width, size.height, {
+          fit: 'cover',
+          position: 'center',
+          withoutEnlargement: true
+        })
+        .webp({ quality: size.quality })
+        .toFile(outputPath);
+
+      const originalSize = fs.statSync(imagePath).size / 1024;
+      const optimizedSize = fs.statSync(outputPath).size / 1024;
+      const savings = originalSize - optimizedSize;
+      const percent = Math.round((savings / originalSize) * 100);
+
+      console.log(`✅ ${outputName.padEnd(45)} ${optimizedSize.toFixed(1).padStart(7)} KB (saved ${percent}%)`);
     }
-  })).then(() => {
-    console.log('\n📊 Summary:');
-    console.log(`Original: ${(totalOriginal/1024/1024).toFixed(2)} MB`);
-    console.log(`Optimized: ${(totalOptimized/1024/1024).toFixed(2)} MB`);
-    console.log(`Saved: ${((totalOriginal - totalOptimized)/1024/1024).toFixed(2)} MB`);
-    console.log(`Total reduction: ${((totalOriginal - totalOptimized) / totalOriginal * 100).toFixed(1)}%\n`);
-    console.log('💡 Move optimized images to replace originals:');
-    console.log(`mv ${outputDir}/* ${imageDir}/`);
-  });
-} catch (error) {
-  console.error('⚠️  Sharp not installed. Install with:');
-  console.error('npm install --save-dev sharp\n');
-  process.exit(1);
+  } catch (error) {
+    console.error(`❌ Error optimizing ${imagePath}:`, error.message);
+  }
 }
+
+async function main() {
+  console.log('🖼️  Image Optimization Report - Mobile First');
+  console.log('=============================================\n');
+
+  if (!fs.existsSync(imageDir)) {
+    console.log('❌ Images directory not found:', imageDir);
+    process.exit(1);
+  }
+
+  // Get all WebP images, excluding already-optimized variants
+  const allImages = fs.readdirSync(imageDir).filter(f => f.endsWith('.webp'));
+  
+  // Filter to only base images (exclude -mobile, -tablet, -thumb variants)
+  const baseImages = allImages.filter(f => {
+    const name = f.replace(/\.webp$/, '');
+    return !name.includes('-mobile') && !name.includes('-tablet') && !name.includes('-thumb');
+  });
+
+  if (baseImages.length === 0) {
+    console.log('✅ No base images found in:', imageDir);
+    process.exit(0);
+  }
+
+  console.log(`Found ${baseImages.length} base images to optimize:\n`);
+
+  for (const image of baseImages) {
+    const imagePath = path.join(imageDir, image);
+    const baseName = path.basename(image, '.webp');
+    
+    // Use default sizes if not specified
+    const sizes = imageSizes[baseName] || [
+      { name: '-mobile', width: 480, height: 360, quality: 75 },
+      { name: '-tablet', width: 768, height: 576, quality: 80 }
+    ];
+
+    await optimizeImage(imagePath, baseName, sizes);
+  }
+
+  console.log('\n✨ Optimization Complete!');
+  console.log('\n📋 Next Steps:');
+  console.log('1. Verify image quality in browser');
+  console.log('2. Deploy optimized images to production');
+  console.log('3. Run Lighthouse again to measure improvements');
+  console.log('\n💾 Install Sharp if not already installed:');
+  console.log('   npm install --save-dev sharp\n');
+}
+
+// Run main function
+main().catch(error => {
+  console.error('❌ Error running optimization:', error.message);
+  process.exit(1);
+});
