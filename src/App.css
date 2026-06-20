@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: "Poppins";
-  font-display: block;
+  font-display: optional;
   ascent-override: 110%;
   descent-override: 20%;
   line-gap-override: 0%;
@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: "Playfair Display";
-  font-display: block;
+  font-display: optional;
   ascent-override: 115%;
   descent-override: 25%;
   line-gap-override: 2%;
