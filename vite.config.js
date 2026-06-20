@@ -18,6 +18,8 @@ export default defineConfig({
       drop: ['console', 'debugger'],
       pure: ['console.log', 'console.info'],
       legalComments: 'none',
+      format: 'iife',
+      splitting: false,
     },
     rollupOptions: {
       output: {

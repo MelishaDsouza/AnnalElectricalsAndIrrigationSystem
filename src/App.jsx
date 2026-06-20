@@ -2,8 +2,18 @@ import { useEffect, useState, useRef, useMemo } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useInView } from "react-intersection-observer";
+
+// Load FontAwesome asynchronously to prevent render blocking
+if (typeof window !== 'undefined' && !document.getElementById('fa-style')) {
+  const link = document.createElement('link');
+  link.id = 'fa-style';
+  link.rel = 'stylesheet';
+  link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+  link.media = 'print';
+  link.onload = function() { this.media = 'all'; };
+  document.head.appendChild(link);
+}
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,16 +61,15 @@ function App() {
   }, [activeCategory, galleryData]);
 
   useEffect(() => {
-    // Defer AOS initialization using requestIdleCallback for better performance
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => {
-        AOS.init({ duration: 600, once: true, delay: 0, offset: 30 });
-      });
-    } else {
-      setTimeout(() => {
-        AOS.init({ duration: 600, once: true, delay: 0, offset: 30 });
-      }, 1000);
-    }
+    // Initialize AOS immediately for better First Contentful Paint
+    // Use 'replace' to avoid multiple initializations
+    AOS.init({ 
+      duration: 600, 
+      once: true, 
+      delay: 0, 
+      offset: 30,
+      disable: window.innerWidth < 480 ? 'mobile' : false // Disable on very small screens
+    });
   }, []);
 
   const { ref: aboutRef, inView: aboutInView } = useInView({

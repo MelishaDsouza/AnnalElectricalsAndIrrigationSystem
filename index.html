@@ -17,10 +17,13 @@
     <!-- Prefetch future navigations -->
     <link rel="prefetch" href="/assets/index.js" as="script" />
     
-    <!-- Preload critical fonts with higher priority -->
-    <link rel="preload" href="/assets/fonts/poppins.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/assets/fonts/playfair.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/assets/fa-brands.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Preload critical fonts with highest priority -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLDD4Z1xlFd-K.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="https://fonts.gstatic.com/s/playfairdisplay/v30/nuFvD-vYSZviVYUq_wlIdhIIozA.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <!-- Async load FontAwesome (non-critical) -->
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /></noscript>
     
     <!-- Preload critical images -->
     <link rel="preload" href="/assets/images/annal-electricals-logo-mangalore.webp" as="image" />
@@ -31,7 +34,7 @@
     
     <!-- Critical CSS inline to eliminate render blocking -->
     <style>
-      html{margin:0;padding:0}body{margin:0;padding:0;font-family:"Poppins",Tahoma,Geneva,Verdana,sans-serif;background-color:#38563a;color:#fff;line-height:1.6}.navbar{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background-color:#000;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.05)}a{text-decoration:none;color:inherit;color:#d4e157}.hero{position:relative;overflow:hidden;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+      html{margin:0;padding:0}body{margin:0;padding:0;font-family:"Poppins",Tahoma,Geneva,Verdana,sans-serif;background-color:#38563a;color:#fff;line-height:1.6}*{box-sizing:border-box}.navbar{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background-color:#000;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.05);font-weight:600}a{text-decoration:none;color:#d4e157}.nav-links{display:flex;gap:2rem;list-style:none}@media(max-width:768px){.nav-links{display:none}.hamburger{display:block}}.hero{position:relative;overflow:hidden;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px;z-index:0}.hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2}.hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.3));z-index:-1}.hero-content{position:relative;z-index:2;max-width:800px}h1{font-size:3.5rem;margin:0;font-weight:700;font-family:"Playfair Display",serif}h2{font-size:2.5rem;margin:0}img{display:block;width:100%;height:auto}
     </style>
     
     <meta property="og:title" content="Annal Electricals & Irrigation System" />
